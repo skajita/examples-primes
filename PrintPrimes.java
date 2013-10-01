@@ -6,16 +6,14 @@ public class PrintPrimes {
   int numberOfPrimes;
   int rowsPerPage; //(RR)
   int columnsPerPage; //(CC)
-  int WW;
   int ORDMAX;
   int listOfPrimes[];
 
   //Default Constructor //
-  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int WW, int ORDMAX) {
+  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int ORDMAX) {
     this.numberOfPrimes   = numberOfPrimes;
     this.rowsPerPage  = rowsPerPage;
     this.columnsPerPage  = columnsPerPage;
-    this.WW  = WW;
     this.ORDMAX = ORDMAX;
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
