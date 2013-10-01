@@ -1,10 +1,15 @@
 public class PrintPrimes {
+
+  //Class Constants //
+
+  //Class Variables //
   int numberOfPrimes;
   int RR;
   int CC;
   int WW;
   int ORDMAX;
   int listOfPrimes[];
+
 
   public PrintPrimes(int numberOfPrimes, int RR, int CC, int WW, int ORDMAX) {
     this.numberOfPrimes   = numberOfPrimes;
@@ -15,14 +20,14 @@ public class PrintPrimes {
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
-s
-
+  //Main Method //
   public static void main(String[] args) {
       PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 10, 30);
       printPrimes.calculatePrimes();
       printPrimes.printPrimes();
   }
 
+  //Calculate all the even primes //
   public void calculatePrimes() {
       /* Two is the only even prime. All other prime numbers are odd.
        * To simplify the code, we simply add 2 as a prime number, and
@@ -33,6 +38,7 @@ s
       calculateOddPrimes();
   }
 
+  //Calculate all the odd prime numbers
   private void calculateOddPrimes() {
       boolean JPRIME;
       int N;
@@ -64,6 +70,7 @@ s
       }
     }
 
+    //Method to print all the prime numbers //
     public void printPrimes() {
         int PAGENUMBER = 1;
         int PAGEOFFSET = 1;
