@@ -15,6 +15,7 @@ public class PrintPrimes {
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
+s
 
   public static void main(String[] args) {
       PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 10, 30);
