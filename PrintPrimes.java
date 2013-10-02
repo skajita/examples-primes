@@ -6,7 +6,7 @@ public class PrintPrimes {
   int numberOfPrimes;
   int rowsPerPage; //(RR)
   int columnsPerPage; //(CC)
-  int ORDMAX;
+  int ORDMAX; //
   int listOfPrimes[];
 
   //Default Constructor //
@@ -39,31 +39,31 @@ public class PrintPrimes {
   //Calculate all the odd prime numbers
   private void calculateOddPrimes() {
       boolean isPrime;
-      int N;
-      int MULT[] = new int[ORDMAX + 1];
+      int primeIndex;
+      int primeMultiples[] = new int[ORDMAX + 1];
 
       int currentNumber = 1;
-      int ORD = 2;
+      int comparisonIndex = 2;
       int square = 9;
 
       for(int numberOfPrimesFoundSoFar = 2; numberOfPrimesFoundSoFar <= numberOfPrimes; numberOfPrimesFoundSoFar++) {
         do {
           currentNumber += 2;
           if (currentNumber == square) {
-            ORD = ORD + 1;
-            square = listOfPrimes[ORD] * listOfPrimes[ORD];
-            MULT[ORD - 1] = currentNumber;
+            comparisonIndex++;
+            square = listOfPrimes[comparisonIndex] * listOfPrimes[comparisonIndex];
+            primeMultiples[comparisonIndex - 1] = currentNumber;
           }
-          N = 2;
+          primeIndex = 2;
           isPrime = true;
-          while (N < ORD && isPrime) {
-            while (MULT[N] < currentNumber){
-              MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
+          while (primeIndex < comparisonIndex && isPrime) {
+            while (primeMultiples[primeIndex] < currentNumber){
+              primeMultiples[primeIndex] = primeMultiples[primeIndex] + listOfPrimes[primeIndex] + listOfPrimes[primeIndex];
             }
-            if (MULT[N] == currentNumber){
+            if (primeMultiples[primeIndex] == currentNumber){
               isPrime = false;
             }
-            N = N + 1;
+            primeIndex++;
           }
         } while (!isPrime);
         listOfPrimes[numberOfPrimesFoundSoFar] = currentNumber;
@@ -74,23 +74,29 @@ public class PrintPrimes {
     public void printPrimes() {
         int pageNumber = 1;
         int pageOffset = 1;
+        
         while (pageOffset <= numberOfPrimes) {
           System.out.println("The First " + numberOfPrimes +
                                " Prime Numbers --- Page " + pageNumber);
           System.out.println("");
+          
           for (int rowOffset = pageOffset; rowOffset < pageOffset + rowsPerPage; rowOffset++){
-            for (int C = 0; C < columnsPerPage;C++){
-              if (rowOffset + C * rowsPerPage <= numberOfPrimes){
-                System.out.format("%10d", listOfPrimes[rowOffset + C * rowsPerPage]);
+            for (int columns = 0; columns < columnsPerPage; columns++){
+              if (rowOffset + columns * rowsPerPage <= numberOfPrimes){
+                System.out.format("%10d", listOfPrimes[rowOffset + columns * rowsPerPage]);
               }
             }
             System.out.println("");
           }
           System.out.println("\f");
-          pageNumber = pageNumber + 1;
+          pageNumber++;
           pageOffset = pageOffset + rowsPerPage * columnsPerPage;
         }
     }
 }
 
-      
+// changed "MULT[]" to "primeMultiples[]"      
+// changed "C" to "columns" 
+// changed "ORD" to "comparisonIndex"
+// changed "N" to "primeIndex"
+// modified mathematical styling (ex. C = C + 1 to C++)
