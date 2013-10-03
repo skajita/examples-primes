@@ -40,7 +40,7 @@ public class PrintPrimes {
   private void calculateOddPrimes() {
       boolean isPrime;
       int primeIndex;
-      int primeMultiples[] = new int[maxComparisonIndex + 1];
+      int multiplesOfPrime[] = new int[maxComparisonIndex + 1];
 
       int currentNumber = 1;
       int comparisonIndex = 2;
@@ -52,15 +52,15 @@ public class PrintPrimes {
           if (currentNumber == square) {
             comparisonIndex++;
             square = listOfPrimes[comparisonIndex] * listOfPrimes[comparisonIndex];
-            primeMultiples[comparisonIndex - 1] = currentNumber;
+            multiplesOfPrime[comparisonIndex - 1] = currentNumber;
           }
           primeIndex = 2;
           isPrime = true;
           while (primeIndex < comparisonIndex && isPrime) {
-            while (primeMultiples[primeIndex] < currentNumber){
-              primeMultiples[primeIndex] = primeMultiples[primeIndex] + listOfPrimes[primeIndex] + listOfPrimes[primeIndex];
+            while (multiplesOfPrime[primeIndex] < currentNumber){
+              multiplesOfPrime[primeIndex] = multiplesOfPrime[primeIndex] + listOfPrimes[primeIndex] + listOfPrimes[primeIndex];
             }
-            if (primeMultiples[primeIndex] == currentNumber){
+            if (multiplesOfPrime[primeIndex] == currentNumber){
               isPrime = false;
             }
             primeIndex++;
