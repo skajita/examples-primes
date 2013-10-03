@@ -1,7 +1,5 @@
 public class PrintPrimes {
 
-  //Class Constants //
-
   //Class Variables //
   int numberOfPrimes;
   int rowsPerPage; 
@@ -20,7 +18,11 @@ public class PrintPrimes {
 
   //Main Method //
   public static void main(String[] args) {
+    
+      //Initialize the printPrimes Object
       PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 30);
+      
+      //
       printPrimes.calculatePrimes();
       printPrimes.printPrimes();
   }
@@ -38,34 +40,51 @@ public class PrintPrimes {
 
   //Calculate all the odd prime numbers
   private void calculateOddPrimes() {
+    
+      //Declare local variables
       boolean isPrime;
       int primeIndex;
       int multiplesOfPrime[] = new int[maxComparisonIndex + 1];
-
+      
+      //Initialize local variables
       int currentNumber = 1;
       int comparisonIndex = 2;
       int square = 9;
-
+      
+      //Find and store prime numbers in array lisOfPrimes[ ] 
       for(int numberOfPrimesFoundSoFar = 2; numberOfPrimesFoundSoFar <= numberOfPrimes; numberOfPrimesFoundSoFar++) {
+        
+        //do while the number is not prime (until the prime number is found)
         do {
+          
           currentNumber += 2;
+          
           if (currentNumber == square) {
+            
             comparisonIndex++;
             square = listOfPrimes[comparisonIndex] * listOfPrimes[comparisonIndex];
             multiplesOfPrime[comparisonIndex - 1] = currentNumber;
           }
+          
           primeIndex = 2;
           isPrime = true;
+          
           while (primeIndex < comparisonIndex && isPrime) {
+            
             while (multiplesOfPrime[primeIndex] < currentNumber){
               multiplesOfPrime[primeIndex] = multiplesOfPrime[primeIndex] + listOfPrimes[primeIndex] + listOfPrimes[primeIndex];
             }
+            
             if (multiplesOfPrime[primeIndex] == currentNumber){
               isPrime = false;
             }
+            
             primeIndex++;
           }
+          
         } while (!isPrime);
+        
+        
         listOfPrimes[numberOfPrimesFoundSoFar] = currentNumber;
       }
     }
@@ -76,19 +95,30 @@ public class PrintPrimes {
         int pageOffset = 1;
         
         while (pageOffset <= numberOfPrimes) {
-          System.out.println("The First " + numberOfPrimes +
-                               " Prime Numbers --- Page " + pageNumber);
+          
+          //Print the header
+          System.out.println("The First " + numberOfPrimes + " Prime Numbers --- Page " + pageNumber);
           System.out.println("");
           
+          //Print primes from top to bottom 
           for (int rowOffset = pageOffset; rowOffset < pageOffset + rowsPerPage; rowOffset++){
+            
+            //Print primes from left to right 
             for (int columns = 0; columns < columnsPerPage; columns++){
+              
+              //Find and print the right prime number based on their position
               if (rowOffset + columns * rowsPerPage <= numberOfPrimes){
                 System.out.format("%10d", listOfPrimes[rowOffset + columns * rowsPerPage]);
               }
+              
             }
+            
             System.out.println("");
           }
+          
           System.out.println("\f");
+          
+          //Update pageNumber and pageOffset
           pageNumber++;
           pageOffset = pageOffset + rowsPerPage * columnsPerPage;
         }
