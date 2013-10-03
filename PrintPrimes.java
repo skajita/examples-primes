@@ -4,17 +4,17 @@ public class PrintPrimes {
 
   //Class Variables //
   int numberOfPrimes;
-  int rowsPerPage; //(RR)
-  int columnsPerPage; //(CC)
-  int ORDMAX; //
+  int rowsPerPage; 
+  int columnsPerPage; 
+  int maxComparisonIndex; 
   int listOfPrimes[];
 
   //Default Constructor //
-  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int ORDMAX) {
+  public PrintPrimes(int numberOfPrimes, int rowsPerPage, int columnsPerPage, int maxComparisonIndex) {
     this.numberOfPrimes   = numberOfPrimes;
     this.rowsPerPage  = rowsPerPage;
     this.columnsPerPage  = columnsPerPage;
-    this.ORDMAX = ORDMAX;
+    this.maxComparisonIndex = maxComparisonIndex;
     this.listOfPrimes = new int[numberOfPrimes + 1];
   }
 
@@ -40,7 +40,7 @@ public class PrintPrimes {
   private void calculateOddPrimes() {
       boolean isPrime;
       int primeIndex;
-      int primeMultiples[] = new int[ORDMAX + 1];
+      int primeMultiples[] = new int[maxComparisonIndex + 1];
 
       int currentNumber = 1;
       int comparisonIndex = 2;
@@ -94,9 +94,3 @@ public class PrintPrimes {
         }
     }
 }
-
-// changed "MULT[]" to "primeMultiples[]"      
-// changed "C" to "columns" 
-// changed "ORD" to "comparisonIndex"
-// changed "N" to "primeIndex"
-// modified mathematical styling (ex. C = C + 1 to C++)
