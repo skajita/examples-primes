@@ -22,8 +22,10 @@ public class PrintPrimes {
       //Initialize the printPrimes Object
       PrintPrimes printPrimes = new PrintPrimes(300, 50, 4, 30);
       
-      //
+      //Calculate numberOfPrimes (in this case 300) prime numbers 
       printPrimes.calculatePrimes();
+      
+      //Print all primes calculated
       printPrimes.printPrimes();
   }
 
